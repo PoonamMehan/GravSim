@@ -1,37 +1,53 @@
-# QuantaForce
+# GravSim
 
-A fluid simulation engine written in C++ for Aerodynamics simulations.
+A small **gravity simulation** written in C++ using [raylib](https://www.raylib.com/) for graphics. Two bodies (circles) move under Newtonian gravity; forces are computed with an inverse-square law and positions updated each frame. The window shows the two bodies and a line between them.
+
+## What the project does
+
+- Simulates two bodies with position, velocity, acceleration, and mass.
+- Applies Newtonian gravity: \( F = G \, m_1 m_2 / r^2 \), with a fixed timestep.
+- Renders in a raylib window: one body as an orange circle, the other as a red circle, with a green line connecting them.
+- Runs in a loop until you close the window.
 
 ## Setup
 
-1. Install [raylib](https://raysan5.itch.io/raylib/download/eyJleHBpcmVzIjoxNzI2Njg5ODE0LCJpZCI6ODUzMzF9.lJkb3%2fgFOmsbN1Jhj91dU3S6uWA%3d)
-2. Install chocolatey (if you don't have it already)
+### Prerequisites
+
+1. **raylib** — On Windows, raylib must be available so the compiler can find headers and the library. The makefile expects:
+   - Include path: `C:\raylib\include`
+   - Library path: `C:\raylib\lib`
+   - You can [download raylib](https://github.com/raysan5/raylib/releases) (e.g. Windows MinGW build) and unpack it so that `raylib.h` is in `C:\raylib\include` and `libraylib.a` (or the appropriate lib) is in `C:\raylib\lib`.
+   - Alternatively, run the provided script to fetch raylib into `./lib`, then adjust the makefile’s `CXXFLAGS` and `LDFLAGS` to use `./lib` instead of `C:\raylib` if needed:
+     ```powershell
+     .\setup-raylib.ps1
+     ```
+2. **Chocolatey** (Windows package manager, if you don’t have it):
    ```powershell
    Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
    ```
-3. Install make using chocolatey
+3. **Make** and **MinGW** (C++ compiler and build tools):
    ```powershell
    choco install make
-   ```
-4. Install mingw using chocolatey (if you don't have it already)
-   ```powershell
    choco install mingw
    ```
-5. Clone the repository and enter the directory
+
+### Build and run
+
+1. Clone the repo and go to the project root:
    ```powershell
-   git clone https://github.com/atharvparlikar/quantaforce.git
-   cd quantaforce
+   git clone https://github.com/PoonamMehan/GravSim.git
    ```
-6. Run following command to build the project (in the root directory)
+2. Build:
    ```powershell
    make
    ```
-7. Run the engine
-
+3. Run the simulation:
    ```powershell
    .\bin\game.exe
    ```
 
-   ## How to contribute to the project
+To remove build artifacts: `make clean`.
 
-   Coming soon...
+## How to contribute
+
+Coming soon...
